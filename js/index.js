@@ -9,6 +9,10 @@ $(document).ready(function () {
         [0, 0, 0, 0, 0, 0, 0]
     ];
 
+    var player = 1;
+    var line = [5, 5, 5, 5, 5, 5, 5]
+    var pionPlayer = 'player1';
+
     function printBoard() {
         var boardHtml = `<div class="container">`;
         for (var i = 0; i < 6; i++) {
@@ -26,70 +30,44 @@ $(document).ready(function () {
         $('#board').html(boardHtml)
     }
 
-    var player = 1;
+    function choosePlayer() {
+        if (player % 2 === 0) {
+            player++;
+            pionPlayer = 'player2';
+            $(`#tour`).html('<p>Au tour du joueur 1</p>')
+        } else {
+            player++;
+            pionPlayer = 'player1'
+            $(`#tour`).html('<p>Au tour du joueur 2</p>')
+        }
+    }
+
+    function playOnColumn(column) {
+
+        choosePlayer();
+        if (board[line[column]][column] === 0) {
+            $(`#${line[column]}-${column}`).addClass(pionPlayer)
+            board[line[column]][column] = 1;
+        } else if (board[line[column]][column] === 1) {
+            if (line[column] === 0) {
+                console.log("fin de la colonne, impossible de rajoute des pions");
+            } else {
+                line[column]--;
+                $(`#${line[column]}-${column}`).addClass(pionPlayer)
+                board[line[column]][column] = 1;
+            }
+        }
+    }
 
     function play() {
-
-        var line = [5, 5, 5, 5, 5, 5, 5]
-        var pionPlayer = 'player1';
-
-        $(`#column0`).click(function () {
-            if (player % 2 === 0) {
-                player++;
-                pionPlayer = 'player2';
-                $(`#tour`).html('<p>Au tour du joueur 1</p>')
-            } else {
-                player++;
-                pionPlayer = 'player1'
-                $(`#tour`).html('<p>Au tour du joueur 2</p>')
-            }
-            if (board[line[0]][0] === 0) {
-                $(`#${line[0]}-${0}`).addClass(pionPlayer)
-                board[line[0]][0] = 1;
-            } else if (board[line[0]][0] === 1) {
-                line[0]--;
-                $(`#${line[0]}-${0}`).addClass(pionPlayer)
-                board[line[0]][0] = 1;
-            }
-        })
-        $(`#column1`).click(function () {
-            if (player % 2 === 0) {
-                player++;
-                pionPlayer = 'player2';
-                $(`#tour`).html('<p>Au tour du joueur 1</p>')
-            } else {
-                player++;
-                pionPlayer = 'player1'
-                $(`#tour`).html('<p>Au tour du joueur 2</p>')
-            }
-            if (board[line[1]][1] === 0) {
-                $(`#${line[1]}-${1}`).addClass(pionPlayer)
-                board[line[1]][1] = 1;
-            } else if (board[line[1]][1] === 1) {
-                line[1]--;
-                $(`#${line[1]}-${1}`).addClass(pionPlayer)
-                board[line[1]][1] = 1;
-            }
-        })
-        $(`#column2`).click(function () {
-            if (player % 2 === 0) {
-                player++;
-                pionPlayer = 'player2';
-                $(`#tour`).html('<p>Au tour du joueur 1</p>')
-            } else {
-                player++;
-                pionPlayer = 'player1'
-                $(`#tour`).html('<p>Au tour du joueur 2</p>')
-            }
-            if (board[line[2]][2] === 0) {
-                $(`#${line[2]}-${2}`).addClass(pionPlayer)
-                board[line[2]][2] = 1;
-            } else if (board[line[2]][2] === 1) {
-                line[2]--;
-                $(`#${line[2]}-${2}`).addClass(pionPlayer)
-                board[line[2]][2] = 1;
-            }
-        })
+        $(`#column0`).click(() => { playOnColumn(0) })
+        $(`#column1`).click(() => { playOnColumn(1) })
+        $(`#column2`).click(() => { playOnColumn(2) })
+        $(`#column3`).click(() => { playOnColumn(3) })
+        $(`#column4`).click(() => { playOnColumn(4) })
+        $(`#column5`).click(() => { playOnColumn(5) })
+        $(`#column6`).click(() => { playOnColumn(6) })
+        $(`#column7`).click(() => { playOnColumn(7) })
     }
 
     printBoard()

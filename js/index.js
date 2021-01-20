@@ -31,31 +31,38 @@ $(document).ready(function () {
     }
 
     function choosePlayer() { // Fonction pour choisir le joueur
-        if (player % 2 === 0) { // Nombre pair = joueur2
-            player++;
-            pionPlayer = 'player2';
+        if (player === 2) { // Nombre pair = joueur2
+            player = 1;
+            pionPlayer = 'player1';
             $(`#tour`).html('<p>Au tour du joueur 1</p>')
         } else { // Nombre impaire = joueur1
-            player++;
-            pionPlayer = 'player1'
+            player = 2;
+            pionPlayer = 'player2'
             $(`#tour`).html('<p>Au tour du joueur 2</p>')
         }
     }
 
     function playOnColumn(column) { // Fonction pour jouer sur la colonne
 
-        choosePlayer();
         if (board[line[column]][column] === 0) { // Si la dernière ligne = 0
             $(`#${line[column]}-${column}`).addClass(pionPlayer) // Alors j'ajoute un pion
-            board[line[column]][column] = 1; // Remplace 0 par 1
-        } else if (board[line[column]][column] === 1) { // Si non si la ligne = 1
+            board[line[column]][column] = player; // Remplace par le chiffre du joueur
+        } else if (board[line[column]][column] === 1 || board[line[column]][column] === 2) { // Si non si la ligne = 1
             if (line[column] === 0) { // Si le joueur essaye de jouer sur la première ligne
                 console.log("fin de la colonne, impossible de rajoute des pions"); // Alors j'indique qu'on ne peut plus mettre de pion
             } else { // Si non
                 line[column]--;
                 $(`#${line[column]}-${column}`).addClass(pionPlayer) // Je joue le pion
-                board[line[column]][column] = 1;
+                board[line[column]][column] = player; // Remplace par le chiffre du joueur
             }
+        }
+
+        choosePlayer();
+    }
+
+    function checkRow(row) {
+        for (var i = 0; i < row.length; i++) {
+
         }
     }
 
@@ -82,6 +89,6 @@ $(document).ready(function () {
 
     printBoard()
     playWithButton()
-    playWithCase()
+    // playWithCase()
 
 })

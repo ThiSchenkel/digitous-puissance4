@@ -16,15 +16,15 @@ $(document).ready(function () {
     function printBoard() {
         var boardHtml = `<div class="container">`;
         for (var i = 0; i < 6; i++) {
-            boardHtml += `<div class="row" id="row${i}">`; // Génère les lignes
+            boardHtml += `<div class="row centrage" id="row${i}">`; // Génère les lignes
             for (var j = 0; j < 7; j++) {
-                boardHtml += `<div class="col-1 case" id="${i}-${j}">${board[i][j]}</div>`; // Génère les colonnes
+                boardHtml += `<div class="col-1 case centrage" id="${i}-${j}">${board[i][j]}</div>`; // Génère les colonnes
             }
             boardHtml += `</div>`;
         }
-        boardHtml += `<div class="row">`;
+        boardHtml += `<div class="row centercol">`;
         for (var k = 0; k < 7; k++) { // Génère les button
-            boardHtml += `<div class="col-1"><input type="button" value="${k + 1}" id="column${k}" alt="play at ${k + 1}"></div>`;
+            boardHtml += `<div class="col-1"><input type="button" class="buttoncol " value="${k + 1}" id="column${k}" alt="play at ${k + 1}"></div>`;
         }
         boardHtml += `</div>`;
         $('#board').html(boardHtml)
@@ -34,11 +34,11 @@ $(document).ready(function () {
         if (player === 2) { // Nombre pair = joueur2
             player = 1;
             pionPlayer = 'player1';
-            $(`#tour`).html('<p>Au tour du joueur 1</p>')
+            $(`#newparty`).html('<p>Joueur 1 à toi de jouer!</p>')
         } else { // Nombre impaire = joueur1
             player = 2;
             pionPlayer = 'player2'
-            $(`#tour`).html('<p>Au tour du joueur 2</p>')
+            $(`#newparty`).html('<p>Joueur 2 à toi de jouer!</p>')
         }
     }
 

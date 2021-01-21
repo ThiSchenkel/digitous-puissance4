@@ -49,6 +49,8 @@ $(document).ready(function () {
             board[line[column]][column] = player; // Remplace par le chiffre du joueur
             checkRow(line[column], player);
             checkColumn(column, player);
+            checkDiagonalLeft(player)
+            checkDiagonalRight(player)
         } else if (board[line[column]][column] === 1 || board[line[column]][column] === 2) { // Si non si la ligne = 1
             if (line[column] === 0) { // Si le joueur essaye de jouer sur la première ligne
                 console.log("fin de la colonne, impossible de rajoute des pions"); // Alors j'indique qu'on ne peut plus mettre de pion
@@ -58,6 +60,8 @@ $(document).ready(function () {
                 board[line[column]][column] = player; // Remplace par le chiffre du joueur
                 checkRow(line[column], player);
                 checkColumn(column, player);
+                checkDiagonalLeft(player)
+                checkDiagonalRight(player)
             }
         }
         choosePlayer();
@@ -85,6 +89,32 @@ $(document).ready(function () {
         }
     }
 
+    function checkDiagonalLeft(player) {
+        for (var i = 3; i < 6; i++) {
+            for (var j = 0; j < 4; j++) {
+                if (board[i][j] === player &&
+                    board[i - 1][j + 1] === player &&
+                    board[i - 2][j + 2] === player &&
+                    board[i - 3][j + 3] === player) {
+                    console.log(`Gagné! en diagonale par le joueurs ${player}`)
+                }
+            }
+        }
+    }
+
+    function checkDiagonalRight(player) {
+        for (var i = 3; i < 6; i++) {
+            for (var j = 3; j < 7; j++) {
+                if (board[i][j] === player &&
+                    board[i - 1][j - 1] === player &&
+                    board[i - 2][j - 2] === player &&
+                    board[i - 3][j - 3] === player) {
+                    console.log(`Gagné! en diagonale par le joueurs ${player}`)
+                }
+            }
+        }
+    }
+
     function playWithButton() { // Fonction boutton pour jouer sur la colonne
         $(`#column0`).click(() => { playOnColumn(0) })
         $(`#column1`).click(() => { playOnColumn(1) })
@@ -108,5 +138,4 @@ $(document).ready(function () {
 
     printBoard()
     playWithButton()
-
 })

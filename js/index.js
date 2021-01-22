@@ -77,6 +77,18 @@ $(document).ready(function () {
         }
     }
 
+    function winShine() {// les boutons brillent quand le joueur a gagné
+        if (win === 1) {
+            $(".player1").css({
+                animation: "flicker 1s infinite alternate"
+            })
+        } if (win === 2) {
+            $(".player2").css({
+                animation: "flicker 1s infinite alternate"
+            })
+        }
+    }
+
     function checkRow(row, player) { // Fonction win horizontale
         for (var i = 0; i < 4; i++) {
             if (board[row][i] === player && // Check si a la position "i" il y a le p1
@@ -85,7 +97,7 @@ $(document).ready(function () {
                 board[row][i + 3] === player) { // Check si a la position "i + 3" il y a le p1
                 console.log(`Gagné! en ligne par le joueurs ${player} sur la ligne ${row}`);
                 win = player;
-            }
+            } winShine();
         }
     }
 
@@ -98,7 +110,7 @@ $(document).ready(function () {
                 console.log(`Gagné! en ligne par le joueurs ${player} sur la colonne ${column}`)
                 win = player;
             }
-        }
+        } winShine();
     }
 
     function checkDiagonalLeft(player) {
@@ -111,7 +123,7 @@ $(document).ready(function () {
                     console.log(`Gagné! en diagonale par le joueurs ${player}`)
                     win = player;
                 }
-            }
+            } winShine();
         }
     }
 
@@ -125,7 +137,7 @@ $(document).ready(function () {
                     console.log(`Gagné! en diagonale par le joueurs ${player}`)
                     win = player;
                 }
-            }
+            } winShine();
         }
     }
 

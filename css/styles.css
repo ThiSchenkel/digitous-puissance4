@@ -27,17 +27,17 @@ body{
     justify-content: center;
     align-items: center;
     padding: 20px;
-    margin:20px;
-    margin-top: 50px;
+    /* margin:20px; */
+    /* margin-top: 50px; */
     border : 2px solid #08f;
-    width: 490px;
+    /* width: 490px; */
     border-radius: 10px; 
 
 }
 
 .case {
-    width: 50px;
-    height: 50px;
+    min-width: 70px;
+    min-height: 70px;
     border : 5px #0097e6 outset;
     border-radius: 50%;
     margin: 1px;
@@ -52,8 +52,6 @@ body{
   padding-left: 0px;
   padding-right: 0px;
 }
-
-
 
 h1{
   font-size: 20px;
@@ -76,16 +74,12 @@ p{
   font-size: 20px;
   font-weight: bolder;
 
- 
 }
 
 .centrage {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  margin: 0px;
-  
 }
 
 #row{
@@ -93,13 +87,11 @@ p{
 }
 
 .centercol{
-  margin: 0;
   padding-top: 10px;
   padding-bottom: 20px;
   margin: 0%;
   display: flex;
   justify-content: center;
-  
 }
 
 .centercol >.col-1 {
@@ -109,16 +101,29 @@ p{
 }
 
 .buttoncol{
-  width: 50px;
-  height: 50px;
-  
-  border-radius: 50%;
   font-size: 20px;
   color: white;
-  background-color: #0097e6;
-  /* animation: flicker 5s infinite alternate; */
-
+  width: 50px;
+  height: 50px;
+  border: black;
+  border-radius: 50%;
+  overflow: hidden;
+  background-image: -webkit-linear-gradient(45deg, #192a56 0%,  #0097e6 100%);    
+  background-image: linear-gradient(45deg, #192a56 0%,  #0097e6);
+  transition: .4s;
 }
+
+/* enlever le contour carré blanc du bouton */
+.buttoncol{
+  outline: none; 
+}
+
+.buttoncol:hover{
+-webkit-transform: rotate(10deg);
+-ms-transform: rotate(10deg);
+transform: rotate(10deg);
+}
+
 #newparty {
  font-weight: bolder;
  margin: 20x;
@@ -131,14 +136,23 @@ font-weight: 300;
  animation: flicker 2s infinite alternate;  
 }
 
-.player1 {
- background: linear-gradient(to top, #fbc531, 20%,#e1b12c);
-   /* animation: flicker 1.5s infinite alternate;  */
-}
-.player2 {
-   background: linear-gradient(to top, #e84118, 30%,#c23616);
-
-}
+.btn{
+  font-weight: bolder;
+   margin: 20x;
+   padding: 10px;
+   width: 200px;
+   font-size: 15px;
+   font-weight: 300;
+   border-radius : 10px;
+  }
+  
+  .player1 {
+    background: linear-gradient(to top,#FFC312, 60%, #F79F1F);
+   }
+   .player2 {
+      background: linear-gradient(to bottom, #EA2027, 70%,#EE5A24);
+   }
+  
 
 h1::-moz-selection {
     background-color: var(--neon-border-color);

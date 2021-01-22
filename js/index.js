@@ -22,6 +22,7 @@ $(document).ready(function () {
             }
             boardHtml += `</div>`;
         }
+        boardHtml += `</div>`;
         boardHtml += `<div class="row centercol">`;
         for (var k = 0; k < 7; k++) { // Génère les button
             boardHtml += `<div class="col-1"><input type="button" class="buttoncol " value="${k + 1}" id="column${k}" alt="play at ${k + 1}"></div>`;

@@ -14,4 +14,4 @@ Les différentes fonctions qu'on a réalisé :
 
 ----------------
 
-Projet réalisé en trinôme.  AllanJAUDALLY ((https://github.com/nerfic)   [@ThiSchenkel](https://github.com/ThiSchenkel) [@gangchenyeshi](https://github.com/gangchenyeshi)
+Projet réalisé en trinôme.   [@AllanJAUDALLY](https://github.com/nerfic) [@ThiSchenkel](https://github.com/ThiSchenkel) [@gangchenyeshi](https://github.com/gangchenyeshi)
